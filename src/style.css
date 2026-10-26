@@ -1,0 +1,1912 @@
+/* =========================================================
+   PIB 2026 — CSS OFICIAL CONSOLIDADO
+   Estrutura atual:
+   - Tela de instalação
+   - Tela de cadastro/acesso
+   - Calendário oficial
+   - Data selecionada
+   - O que defendemos neste mês
+   - Frase do mês
+   - Meus compromissos
+   - Admin
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    color: #0f172a;
+    background: #020617;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+#root {
+    min-height: 100%;
+    margin: 0;
+}
+
+body {
+    background: #020617;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+.loading {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    color: #ffffff;
+    font-weight: 900;
+}
+
+/* =========================================================
+   CORES DOS MESES
+   ========================================================= */
+
+.theme-janeiro {
+    --theme: #f8fafc;
+    --theme-dark: #64748b;
+    --theme-soft: #e2e8f0;
+    --theme-contrast: #0f172a;
+}
+
+.theme-fevereiro {
+    --theme: #9ca3af;
+    --theme-dark: #374151;
+    --theme-soft: #e5e7eb;
+    --theme-contrast: #ffffff;
+}
+
+.theme-marco {
+    --theme: #0057d9;
+    --theme-dark: #003a91;
+    --theme-soft: #dbeafe;
+    --theme-contrast: #ffffff;
+}
+
+.theme-abril {
+    --theme: #ffd400;
+    --theme-dark: #b77900;
+    --theme-soft: #fff3b0;
+    --theme-contrast: #422006;
+}
+
+.theme-maio {
+    --theme: #ff8a00;
+    --theme-dark: #c2410c;
+    --theme-soft: #ffedd5;
+    --theme-contrast: #ffffff;
+}
+
+/* Junho Vermelho — vermelho sangue */
+.theme-junho {
+    --theme: #b30000;
+    --theme-dark: #7f0000;
+    --theme-soft: #ffe0e0;
+    --theme-contrast: #ffffff;
+}
+
+.theme-julho {
+    --theme: #8a2be2;
+    --theme-dark: #581c87;
+    --theme-soft: #f3e8ff;
+    --theme-contrast: #ffffff;
+}
+
+.theme-agosto {
+    --theme: #d946ef;
+    --theme-dark: #a21caf;
+    --theme-soft: #fae8ff;
+    --theme-contrast: #ffffff;
+}
+
+/* Setembro Amarelo — amarelo mais vivo */
+.theme-setembro {
+    --theme: #ffdf00;
+    --theme-dark: #d6a900;
+    --theme-soft: #fff7bf;
+    --theme-contrast: #3f2f00;
+}
+
+/* Outubro Dourado — dourado mais real */
+.theme-outubro {
+    --theme: #d4af37;
+    --theme-dark: #b8860b;
+    --theme-soft: #fff1b8;
+    --theme-contrast: #3f2f00;
+}
+
+.theme-novembro {
+    --theme: #0077ff;
+    --theme-dark: #1d4ed8;
+    --theme-soft: #dbeafe;
+    --theme-contrast: #ffffff;
+}
+
+/* Dezembro Vermelho — vermelho vivo/escarlate */
+.theme-dezembro {
+    --theme: #e31b23;
+    --theme-dark: #b5121b;
+    --theme-soft: #ffe3e5;
+    --theme-contrast: #ffffff;
+}
+
+/* =========================================================
+   BOTÕES E ELEMENTOS GERAIS
+   ========================================================= */
+
+.primaryButton {
+    border: none;
+    border-radius: 18px;
+    padding: 15px 18px;
+    background: #2563eb;
+    color: #ffffff;
+    font-weight: 950;
+    font-size: 1rem;
+    box-shadow: 0 14px 30px rgba(37, 99, 235, 0.24);
+}
+
+.primaryButton:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.ghostButton {
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-radius: 18px;
+    padding: 13px 16px;
+    background: #ffffff;
+    color: #0f172a;
+    font-weight: 900;
+}
+
+.dangerButton {
+    border: none;
+    border-radius: 14px;
+    padding: 11px 13px;
+    background: #fee2e2;
+    color: #991b1b;
+    font-weight: 900;
+}
+
+.errorBox {
+    padding: 12px 14px;
+    border-radius: 16px;
+    background: #fee2e2;
+    color: #991b1b;
+    font-weight: 850;
+    line-height: 1.35;
+}
+
+.warningBox {
+    padding: 12px 14px;
+    border-radius: 16px;
+    background: #fef3c7;
+    color: #92400e;
+    font-weight: 850;
+    line-height: 1.35;
+}
+
+.privacyText {
+    display: block;
+    color: #64748b;
+    font-size: 0.83rem;
+    line-height: 1.35;
+    font-weight: 700;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    border-radius: 999px;
+    padding: 7px 12px;
+    color: #1d4ed8;
+    background: #dbeafe;
+    font-size: 0.8rem;
+    font-weight: 950;
+    letter-spacing: 0.02em;
+}
+
+/* =========================================================
+   TELA DE INSTALAÇÃO
+   ========================================================= */
+
+.installIntroPage {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 26px 16px;
+    background:
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.28), transparent 34%),
+        linear-gradient(180deg, #0f172a 0%, #020617 100%);
+}
+
+.installIntroCard {
+    width: min(520px, 100%);
+    position: relative;
+    overflow: hidden;
+    border-radius: 30px;
+    padding: 26px;
+    background: rgba(255, 255, 255, 0.97);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
+}
+
+.installIntroIcon {
+    width: 86px;
+    height: 86px;
+    min-width: 86px;
+    max-width: 86px;
+    min-height: 86px;
+    max-height: 86px;
+    overflow: hidden;
+    border-radius: 24px;
+    display: grid;
+    place-items: center;
+    margin: 0 0 18px;
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 14px 34px rgba(15, 23, 42, 0.18);
+}
+
+.installIntroIcon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 6px;
+}
+
+.installIntroCard h1 {
+    margin: 14px 0 10px;
+    color: #0f172a;
+    font-size: clamp(2rem, 8vw, 3.1rem);
+    line-height: 0.98;
+    letter-spacing: -0.07em;
+}
+
+.installIntroCard p {
+    margin: 0;
+    color: #64748b;
+    font-weight: 760;
+    line-height: 1.45;
+}
+
+.installBenefits {
+    display: grid;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.installBenefits div {
+    padding: 13px;
+    border-radius: 18px;
+    background: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.installBenefits strong,
+.installBenefits span {
+    display: block;
+}
+
+.installBenefits strong {
+    color: #0f172a;
+}
+
+.installBenefits span {
+    color: #64748b;
+    font-size: 0.92rem;
+    margin-top: 3px;
+    font-weight: 700;
+}
+
+.installMainButton,
+.installSecondaryButton {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.installMainButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* =========================================================
+   TELA DE CADASTRO / ACESSO
+   ========================================================= */
+
+.authPage {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 28px 16px;
+    background:
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.22), transparent 34%),
+        linear-gradient(180deg, #0f172a 0%, #020617 100%);
+}
+
+.authCard {
+    width: min(560px, 100%);
+    border-radius: 30px;
+    padding: 26px;
+    background: rgba(255, 255, 255, 0.97);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
+}
+
+.authLogo {
+    width: 82px;
+    height: 82px;
+    overflow: hidden;
+    border-radius: 22px;
+    display: grid;
+    place-items: center;
+    margin: 0 0 14px;
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 14px 32px rgba(15, 23, 42, 0.14);
+}
+
+.authLogo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 8px;
+}
+
+.authCard h1 {
+    margin: 14px 0 8px;
+    color: #0f172a;
+    font-size: clamp(2.4rem, 10vw, 4rem);
+    line-height: 0.95;
+    letter-spacing: -0.075em;
+}
+
+.authCard p {
+    margin: 0 0 18px;
+    color: #64748b;
+    font-weight: 780;
+    line-height: 1.4;
+}
+
+.installInlineButton {
+    width: 100%;
+    border: none;
+    border-radius: 18px;
+    padding: 14px 16px;
+    margin: 0 0 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #0f172a;
+    color: #ffffff;
+    font-weight: 950;
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.2);
+}
+
+.existingAccessBox {
+    margin-top: 22px;
+    padding: 16px;
+    border-radius: 22px;
+    background: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.existingAccessBox h2 {
+    margin: 0 0 6px;
+    color: #0f172a;
+    font-size: 1.25rem;
+}
+
+.existingAccessBox p {
+    margin: 0 0 14px;
+    color: #64748b;
+    font-weight: 700;
+}
+
+.registerDivider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 22px 0 6px;
+    color: #64748b;
+    font-weight: 850;
+    font-size: 0.88rem;
+}
+
+.registerDivider::before,
+.registerDivider::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background: rgba(15, 23, 42, 0.12);
+}
+
+.formGrid {
+    display: grid;
+    gap: 14px;
+}
+
+.formGrid label {
+    display: grid;
+    gap: 7px;
+    color: #0f172a;
+    font-weight: 900;
+}
+
+.formGrid input,
+.formGrid select,
+.formGrid textarea {
+    width: 100%;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    border-radius: 18px;
+    padding: 14px 16px;
+    background: #ffffff;
+    color: #0f172a;
+    outline: none;
+    font-weight: 780;
+}
+
+.formGrid textarea {
+    resize: vertical;
+    min-height: 96px;
+}
+
+.formGrid input::placeholder,
+.formGrid textarea::placeholder {
+    color: #8b8f99;
+}
+
+.formGrid input:focus,
+.formGrid select:focus,
+.formGrid textarea:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+.checkLine {
+    display: flex !important;
+    grid-template-columns: auto 1fr;
+    align-items: flex-start;
+    gap: 10px !important;
+    font-weight: 760 !important;
+    color: #475569 !important;
+}
+
+.checkLine input {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+}
+
+/* =========================================================
+   MODAIS
+   ========================================================= */
+
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    display: grid;
+    place-items: center;
+    padding: 18px;
+    background: rgba(2, 6, 23, 0.62);
+    backdrop-filter: blur(8px);
+}
+
+.modalCard {
+    width: min(540px, 100%);
+    position: relative;
+    max-height: min(86vh, 720px);
+    overflow: auto;
+    border-radius: 28px;
+    padding: 24px;
+    background: #ffffff;
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
+}
+
+.modalCard h2 {
+    margin: 0 0 8px;
+    color: #0f172a;
+    font-size: 1.55rem;
+}
+
+.modalCard p {
+    margin: 0 0 16px;
+    color: #64748b;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.modalClose {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    background: #f1f5f9;
+    color: #0f172a;
+}
+
+.modalActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.confirmList {
+    display: grid;
+    gap: 8px;
+    padding: 14px;
+    border-radius: 18px;
+    background: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.confirmList p {
+    margin: 0;
+    color: #334155;
+}
+
+.myEventsList {
+    display: grid;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.myEventRow {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    align-items: center;
+    padding: 13px;
+    border-radius: 18px;
+    background: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.myEventRow strong,
+.myEventRow span,
+.myEventRow p {
+    display: block;
+}
+
+.myEventRow strong {
+    color: #0f172a;
+    font-size: 0.98rem;
+}
+
+.myEventRow span {
+    margin-top: 4px;
+    color: var(--theme-dark, #1d4ed8);
+    font-size: 0.86rem;
+    font-weight: 850;
+}
+
+.myEventRow p {
+    margin: 6px 0 0;
+    color: #64748b;
+    font-size: 0.86rem;
+}
+
+.deleteUserButton {
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* =========================================================
+   APP / CALENDÁRIO
+   ========================================================= */
+
+.app {
+    min-height: 100vh;
+    width: min(720px, calc(100% - 28px));
+    margin: 0 auto;
+    padding: 16px 0 34px;
+    background:
+        radial-gradient(circle at top right,
+            color-mix(in srgb, var(--theme) 22%, transparent),
+            transparent 32%),
+        linear-gradient(180deg,
+            #0f172a 0%,
+            #020617 28%,
+            #f8fafc 28%,
+            #f8fafc 100%);
+    color: #0f172a;
+}
+
+.officialHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 0 14px;
+    color: #ffffff;
+}
+
+.officialHeaderText {
+    min-width: 0;
+}
+
+.officialHeaderText strong {
+    display: block;
+    color: #ffffff;
+    font-size: clamp(0.82rem, 3.2vw, 1rem);
+    line-height: 1.05;
+    letter-spacing: 0.03em;
+    font-weight: 950;
+}
+
+.officialHeaderText span {
+    display: inline-block;
+    margin-top: 4px;
+    color: var(--theme);
+    font-size: 1.12rem;
+    line-height: 1;
+    font-weight: 950;
+    text-shadow: 0 0 18px color-mix(in srgb, var(--theme) 40%, transparent);
+}
+
+.officialHeaderText p {
+    margin: 5px 0 0;
+    color: #cbd5e1;
+    font-size: clamp(0.7rem, 2.7vw, 0.84rem);
+    line-height: 1.15;
+    font-weight: 850;
+    letter-spacing: 0.02em;
+}
+
+.theme-janeiro .officialHeaderText span {
+    color: #f8fafc;
+}
+
+.theme-fevereiro .officialHeaderText span {
+    color: #d1d5db;
+}
+
+.theme-abril .officialHeaderText span,
+.theme-setembro .officialHeaderText span {
+    color: #ffe45c;
+}
+
+.officialHeaderActions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 7px;
+    flex-wrap: wrap;
+    flex: 0 0 auto;
+}
+
+.roundAction,
+.connectionDot {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+}
+
+.roundAction.active {
+    background: linear-gradient(135deg, var(--theme), var(--theme-dark));
+    color: var(--theme-contrast);
+    border-color: transparent;
+}
+
+.connectionDot.online {
+    color: #22c55e;
+}
+
+.connectionDot.offline {
+    color: #f87171;
+}
+
+/* Painel do calendário */
+
+.calendarPanel {
+    padding: 16px 14px 18px;
+    border-radius: 30px;
+    background: #ffffff;
+    color: #0f172a;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.16);
+}
+
+.calendarNavSimple {
+    display: grid;
+    grid-template-columns: 42px 1fr 42px;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.calendarNavSimple button {
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    background: color-mix(in srgb, var(--theme) 13%, #f8fafc);
+    color: var(--theme-dark);
+}
+
+.calendarMonthTitle {
+    text-align: center;
+    min-width: 0;
+}
+
+.calendarMonthTitle h2 {
+    margin: 0;
+    color: var(--theme-dark);
+    font-size: clamp(1.55rem, 7vw, 2.5rem);
+    line-height: 1;
+    font-weight: 950;
+    letter-spacing: -0.055em;
+}
+
+.theme-janeiro .calendarMonthTitle h2 {
+    color: #475569;
+}
+
+.theme-fevereiro .calendarMonthTitle h2 {
+    color: #374151;
+}
+
+.theme-abril .calendarMonthTitle h2 {
+    color: #b77900;
+}
+
+.theme-setembro .calendarMonthTitle h2 {
+    color: #d6a900;
+}
+
+.theme-outubro .calendarMonthTitle h2 {
+    color: #b8860b;
+}
+
+.weekRow {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    margin: 12px 0 8px;
+}
+
+.weekRow span {
+    text-align: center;
+    color: #64748b;
+    font-size: 0.7rem;
+    font-weight: 950;
+}
+
+.daysGrid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+}
+
+.emptyDay {
+    min-height: 44px;
+}
+
+.dayButton {
+    position: relative;
+    min-height: 46px;
+    border: none;
+    border-radius: 16px;
+    background: transparent;
+    color: #0f172a;
+    display: grid;
+    place-items: center;
+    padding: 0;
+}
+
+.dayButton span {
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    color: inherit;
+    font-weight: 850;
+    border: 1px solid transparent;
+}
+
+/* Remove bolinhas abaixo dos dias */
+.eventDots {
+    display: none !important;
+}
+
+/* Dias com evento: somente número colorido, sem círculo */
+.dayButton.hasEvent:not(.selected) span {
+    color: var(--theme-dark) !important;
+    font-weight: 950;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+    text-shadow:
+        0 1px 1px rgba(255, 255, 255, 0.85),
+        0 1px 2px color-mix(in srgb, var(--theme) 38%, transparent);
+}
+
+/* Ao tocar/passar, mantém sem círculo */
+.dayButton.hasEvent:not(.selected):hover span,
+.dayButton:hover span {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Janeiro Branco — contraste no fundo branco */
+.theme-janeiro .dayButton.hasEvent:not(.selected) span {
+    color: #64748b !important;
+    text-shadow:
+        0 1px 1px #ffffff,
+        0 0 4px rgba(100, 116, 139, 0.28);
+}
+
+/* Fevereiro Cinza */
+.theme-fevereiro .dayButton.hasEvent:not(.selected) span {
+    color: #4b5563 !important;
+    text-shadow:
+        0 1px 1px #ffffff,
+        0 0 4px rgba(75, 85, 99, 0.28);
+}
+
+/* Junho Vermelho — vermelho sangue */
+.theme-junho .dayButton.hasEvent:not(.selected) span {
+    color: #b30000 !important;
+    text-shadow:
+        0 1px 1px #ffffff,
+        0 0 4px rgba(179, 0, 0, 0.35);
+}
+
+/* Setembro Amarelo — amarelo vivo com contraste */
+.theme-setembro .dayButton.hasEvent:not(.selected) span {
+    color: #d6a900 !important;
+    text-shadow:
+        0 1px 1px #fff8d0,
+        0 0 4px rgba(255, 223, 0, 0.45);
+}
+
+/* Outubro Dourado — dourado elegante */
+.theme-outubro .dayButton.hasEvent:not(.selected) span {
+    color: #b8860b !important;
+    text-shadow:
+        0 1px 1px #fff4c2,
+        0 0 4px rgba(212, 175, 55, 0.45);
+}
+
+/* Dezembro Vermelho — escarlate vivo */
+.theme-dezembro .dayButton.hasEvent:not(.selected) span {
+    color: #e31b23 !important;
+    text-shadow:
+        0 1px 1px #ffffff,
+        0 0 4px rgba(227, 27, 35, 0.35);
+}
+
+/* Hoje sem estar selecionado */
+.dayButton.today:not(.selected) span {
+    border: 1px solid var(--theme);
+    color: var(--theme-dark);
+}
+
+/* Dia selecionado continua com destaque cheio */
+.dayButton.selected span {
+    color: #0f172a !important;
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.28)),
+        url("/logo-domingo-especial.png") center / 98% 98% no-repeat !important;
+    border: 2px solid var(--theme-dark) !important;
+    text-shadow:
+        0 1px 1px #ffffff,
+        0 0 4px rgba(255, 255, 255, 0.95),
+        0 1px 4px rgba(15, 23, 42, 0.55) !important;
+    box-shadow:
+        inset 0 1px 1px rgba(255, 255, 255, 0.35),
+        inset 0 -3px 5px rgba(0, 0, 0, 0.16),
+        0 12px 28px color-mix(in srgb, var(--theme) 34%, transparent) !important;
+    text-shadow: none !important;
+    transform: translateY(-1px) !important;
+}
+
+/* =========================================================
+   DATA SELECIONADA
+   ========================================================= */
+
+.selectedDayPanel {
+    margin-top: 14px;
+    padding: 18px;
+    border-radius: 30px;
+    background: #ffffff;
+    color: #0f172a;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.14);
+}
+
+.dragHandle {
+    width: 62px;
+    height: 6px;
+    border-radius: 999px;
+    margin: 0 auto 18px;
+    background: #cbd5e1;
+}
+
+.selectedDayHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.selectedDayHeader span {
+    display: block;
+    color: #64748b;
+    font-size: 0.72rem;
+    font-weight: 950;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.selectedDayHeader h3 {
+    margin: 6px 0 0;
+    color: #0f172a;
+    font-size: 1.7rem;
+    line-height: 1.05;
+}
+
+.floatingDate {
+    width: 72px;
+    height: 72px;
+    flex: 0 0 72px;
+    border: none;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    gap: 0;
+    background: linear-gradient(135deg, var(--theme), var(--theme-dark));
+    color: var(--theme-contrast);
+    box-shadow: 0 16px 34px color-mix(in srgb, var(--theme) 34%, transparent);
+}
+
+.floatingDate svg {
+    width: 18px;
+    height: 18px;
+    margin-bottom: -8px;
+}
+
+.floatingDate span {
+    color: inherit;
+    font-size: 1.6rem;
+    line-height: 1;
+    font-weight: 950;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.emptyState {
+    padding: 16px;
+    border-radius: 20px;
+    background: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.emptyState p {
+    margin: 0;
+    color: #64748b;
+    font-weight: 780;
+}
+
+.eventList {
+    display: grid;
+    gap: 10px;
+}
+
+.eventCard {
+    display: grid;
+    grid-template-columns: 6px 1fr;
+    gap: 12px;
+    padding: 13px;
+    border-radius: 20px;
+    background: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.eventColor {
+    width: 6px;
+    border-radius: 999px;
+    background: var(--theme);
+}
+
+.personalCard .eventColor {
+    background: #2563eb;
+}
+
+.birthdayCard .eventColor {
+    background: #ec4899;
+}
+
+.eventCard span {
+    display: inline-block;
+    width: fit-content;
+    margin-bottom: 5px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    color: var(--theme-dark);
+    background: color-mix(in srgb, var(--theme) 13%, #ffffff);
+    font-size: 0.72rem;
+    font-weight: 950;
+}
+
+.eventCard h4 {
+    margin: 0;
+    color: #0f172a;
+    font-size: 1rem;
+}
+
+.eventCard p {
+    margin: 4px 0 0;
+    color: #64748b;
+    font-size: 0.9rem;
+    font-weight: 720;
+}
+
+/* =========================================================
+   O QUE DEFENDEMOS NESTE MÊS
+   ========================================================= */
+
+.monthDefensePanel {
+    margin-top: 16px;
+    padding: 18px;
+    border-radius: 26px;
+    background: #ffffff;
+    color: #0f172a;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 18px 44px rgba(15, 23, 42, 0.1);
+}
+
+.monthDefensePanel span {
+    display: inline-block;
+    margin-bottom: 8px;
+    padding: 6px 11px;
+    border-radius: 999px;
+    color: var(--theme-dark);
+    background: color-mix(in srgb, var(--theme) 13%, #ffffff);
+    font-size: 0.74rem;
+    font-weight: 950;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.monthDefensePanel h3 {
+    margin: 0;
+    color: var(--theme-dark);
+    font-size: 1.08rem;
+    line-height: 1.2;
+    font-weight: 950;
+}
+
+.monthDefensePanel p {
+    margin: 8px 0 0;
+    color: #64748b;
+    font-size: 0.92rem;
+    line-height: 1.35;
+    font-weight: 760;
+}
+
+/* =========================================================
+   FRASE FINAL
+   ========================================================= */
+
+.footer,
+.calendarFooterQuote {
+    text-align: center;
+    padding: 20px 8px 4px;
+    color: #475569;
+}
+
+.calendarFooterQuote p {
+    margin: 0 auto 8px;
+    max-width: 620px;
+    color: #334155;
+    font-size: 0.98rem;
+    line-height: 1.42;
+    font-weight: 820;
+}
+
+.calendarFooterQuote strong {
+    color: var(--theme-dark);
+    font-weight: 950;
+}
+
+/* =========================================================
+   ADMIN
+   ========================================================= */
+
+.adminPage {
+    min-height: 100vh;
+    padding: 22px 16px 34px;
+    background: #f8fafc;
+}
+
+.adminHeader {
+    width: min(900px, 100%);
+    margin: 0 auto 18px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.adminHeader h1 {
+    margin: 10px 0 6px;
+    font-size: clamp(2rem, 7vw, 3.4rem);
+    line-height: 0.95;
+    letter-spacing: -0.07em;
+}
+
+.adminHeader p {
+    margin: 0;
+    color: #64748b;
+    font-weight: 760;
+}
+
+.adminLogin,
+.adminCard {
+    width: min(900px, 100%);
+    margin: 0 auto;
+}
+
+.adminCard {
+    padding: 20px;
+    border-radius: 28px;
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 18px 44px rgba(15, 23, 42, 0.1);
+}
+
+.adminTools {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.adminTools>div {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.muted {
+    color: #64748b;
+    font-weight: 760;
+}
+
+.userTable {
+    display: grid;
+    gap: 10px;
+}
+
+.userRow {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 12px;
+    align-items: center;
+    padding: 13px;
+    border-radius: 18px;
+    background: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.userAvatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.userRow strong,
+.userRow span,
+.userRow p {
+    display: block;
+}
+
+.userRow strong {
+    color: #0f172a;
+}
+
+.userRow span {
+    margin-top: 3px;
+    color: #2563eb;
+    font-size: 0.9rem;
+    font-weight: 850;
+}
+
+.userRow p {
+    margin: 5px 0 0;
+    color: #64748b;
+    font-size: 0.86rem;
+    font-weight: 720;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 520px) {
+
+    .installIntroPage,
+    .authPage {
+        padding: 18px 14px;
+        align-items: start;
+    }
+
+    .installIntroCard,
+    .authCard {
+        margin-top: 12px;
+        padding: 22px;
+        border-radius: 28px;
+    }
+
+    .installIntroIcon {
+        width: 74px;
+        height: 74px;
+        min-width: 74px;
+        max-width: 74px;
+        min-height: 74px;
+        max-height: 74px;
+        border-radius: 21px;
+        margin-bottom: 14px;
+    }
+
+    .authLogo {
+        width: 74px;
+        height: 74px;
+        border-radius: 21px;
+    }
+
+    .installIntroCard h1 {
+        font-size: clamp(1.75rem, 8vw, 2.35rem);
+        line-height: 1;
+    }
+
+    .authCard h1 {
+        font-size: clamp(2rem, 12vw, 3rem);
+    }
+
+    .formGrid input,
+    .formGrid select,
+    .formGrid textarea {
+        border-radius: 17px;
+        padding: 13px 15px;
+    }
+
+    .app {
+        width: min(100% - 22px, 720px);
+        padding-top: 12px;
+        background:
+            radial-gradient(circle at top right,
+                color-mix(in srgb, var(--theme) 22%, transparent),
+                transparent 32%),
+            linear-gradient(180deg,
+                #0f172a 0%,
+                #020617 25%,
+                #f8fafc 25%,
+                #f8fafc 100%);
+    }
+
+    .officialHeader {
+        gap: 10px;
+        padding-bottom: 12px;
+    }
+
+    .officialHeaderText strong {
+        font-size: 0.78rem;
+    }
+
+    .officialHeaderText span {
+        font-size: 1rem;
+    }
+
+    .officialHeaderText p {
+        font-size: 0.67rem;
+    }
+
+    .officialHeaderActions {
+        gap: 5px;
+    }
+
+    .roundAction,
+    .connectionDot {
+        width: 33px;
+        height: 33px;
+    }
+
+    .calendarPanel {
+        border-radius: 26px;
+        padding: 14px 11px 16px;
+    }
+
+    .calendarNavSimple {
+        grid-template-columns: 38px 1fr 38px;
+        gap: 8px;
+    }
+
+    .calendarNavSimple button {
+        width: 38px;
+        height: 38px;
+    }
+
+    .calendarMonthTitle h2 {
+        font-size: clamp(1.42rem, 7.4vw, 2.05rem);
+    }
+
+    .emptyDay,
+    .dayButton {
+        min-height: 42px;
+    }
+
+    .dayButton span {
+        width: 32px;
+        height: 32px;
+        font-size: 0.92rem;
+    }
+
+    .selectedDayPanel {
+        padding: 16px;
+        border-radius: 26px;
+    }
+
+    .selectedDayHeader h3 {
+        font-size: 1.45rem;
+    }
+
+    .floatingDate {
+        width: 62px;
+        height: 62px;
+        flex-basis: 62px;
+    }
+
+    .floatingDate span {
+        font-size: 1.35rem;
+    }
+
+    .monthDefensePanel {
+        padding: 15px;
+        border-radius: 22px;
+    }
+
+    .monthDefensePanel h3 {
+        font-size: 1rem;
+    }
+
+    .monthDefensePanel p {
+        font-size: 0.86rem;
+    }
+
+    .calendarFooterQuote p {
+        font-size: 0.9rem;
+    }
+
+    .adminHeader {
+        flex-direction: column;
+    }
+
+    .adminTools {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .userRow {
+        grid-template-columns: auto 1fr;
+    }
+
+    .userRow .deleteUserButton {
+        grid-column: 1 / -1;
+        justify-self: end;
+    }
+}
+
+@media (max-width: 390px) {
+    .officialHeader {
+        flex-direction: column;
+    }
+
+    .officialHeaderActions {
+        justify-content: flex-start;
+    }
+
+    .selectedDayHeader {
+        align-items: flex-start;
+    }
+}
+
+/* =========================================================
+   DOMINGOS ESPECIAIS — LOGO DA IGREJA NO DIA
+   Aplica somente em domingos com programação especial da igreja
+   ========================================================= */
+
+.dayButton.specialSunday:not(.selected) span {
+    width: 38px;
+    height: 38px;
+    position: relative;
+    isolation: isolate;
+    color: #0f172a !important;
+    font-weight: 950;
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.34)),
+        url("/logo-domingo-especial.png") center / 96% 96% no-repeat !important;
+    border: 2px solid var(--theme-dark) !important;
+    border-radius: 999px;
+    box-shadow:
+        0 0 0 3px color-mix(in srgb, var(--theme) 18%, transparent),
+        0 8px 18px rgba(15, 23, 42, 0.18) !important;
+    text-shadow:
+        0 1px 1px #ffffff,
+        0 0 3px rgba(255, 255, 255, 0.95),
+        0 1px 4px rgba(15, 23, 42, 0.55) !important;
+}
+
+.dayButton.specialSunday:not(.selected):hover span {
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.22)),
+        url("/logo-domingo-especial.png") center / 98% 98% no-repeat !important;
+    border: 2px solid var(--theme-dark) !important;
+    box-shadow:
+        0 0 0 3px color-mix(in srgb, var(--theme) 22%, transparent),
+        0 10px 20px rgba(15, 23, 42, 0.22) !important;
+}
+
+.dayButton.specialSunday.today:not(.selected) span {
+    border-width: 2px !important;
+    outline: 2px solid color-mix(in srgb, var(--theme) 35%, transparent);
+    outline-offset: 2px;
+}
+
+.dayButton.specialSunday.selected span {
+    color: #0f172a !important;
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.28)),
+        url("/logo-domingo-especial.png") center / 98% 98% no-repeat !important;
+    border: 2px solid var(--theme-dark) !important;
+    text-shadow:
+        0 1px 1px #ffffff,
+        0 0 4px rgba(255, 255, 255, 0.95),
+        0 1px 4px rgba(15, 23, 42, 0.55) !important;
+}
+/* =========================================================
+   ADMIN MODERNO — NOTIFICAÇÕES, ANIVERSARIANTES E DESTAQUES
+   ========================================================= */
+
+.adminHeaderModern h1 {
+  color: #0f172a;
+}
+
+.adminPanelModern {
+  display: grid;
+  gap: 18px;
+}
+
+.adminTabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  padding: 8px;
+  border-radius: 22px;
+  background: #f1f5f9;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.adminTabs button {
+  border: none;
+  border-radius: 16px;
+  padding: 12px 10px;
+  background: transparent;
+  color: #475569;
+  font-weight: 950;
+  font-size: 0.9rem;
+}
+
+.adminTabs button.active {
+  background: #0f172a;
+  color: #ffffff;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.18);
+}
+
+.adminSection {
+  display: grid;
+  gap: 16px;
+}
+
+.adminSectionHeader {
+  padding: 16px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.adminSectionHeader h2 {
+  margin: 0 0 6px;
+  color: #0f172a;
+  font-size: 1.35rem;
+  letter-spacing: -0.03em;
+}
+
+.adminSectionHeader p {
+  margin: 0;
+  color: #64748b;
+  font-weight: 760;
+  line-height: 1.35;
+}
+
+.adminGridForm {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  padding: 16px;
+  border-radius: 24px;
+  background: #f8fafc;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.adminGridForm label,
+.adminMonthSelect {
+  display: grid;
+  gap: 7px;
+  color: #0f172a;
+  font-weight: 900;
+}
+
+.adminGridForm input,
+.adminGridForm textarea,
+.adminGridForm select,
+.adminMonthSelect select {
+  width: 100%;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-radius: 18px;
+  padding: 13px 15px;
+  background: #ffffff;
+  color: #0f172a;
+  outline: none;
+  font-weight: 780;
+}
+
+.adminGridForm textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.wideField {
+  grid-column: 1 / -1;
+}
+
+.adminFormActions {
+  display: flex;
+  align-items: end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.adminListBlock {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 24px;
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.adminListBlock h3 {
+  margin: 0;
+  color: #0f172a;
+}
+
+.compactList,
+.birthdayAdminList {
+  display: grid;
+  gap: 10px;
+}
+
+.compactList article,
+.birthdayAdminCard {
+  display: grid;
+  gap: 10px;
+  padding: 13px;
+  border-radius: 18px;
+  background: #f8fafc;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.compactList article strong,
+.birthdayAdminCard strong {
+  color: #0f172a;
+}
+
+.compactList article span,
+.birthdayAdminCard span {
+  color: #2563eb;
+  font-size: 0.88rem;
+  font-weight: 850;
+}
+
+.compactList article p,
+.birthdayAdminCard p {
+  margin: 0;
+  color: #64748b;
+  font-weight: 720;
+  line-height: 1.35;
+}
+
+.birthdayAdminCard {
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+.birthdayActions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.birthdayActions .ghostButton,
+.birthdayActions .primaryButton {
+  padding: 10px 12px;
+  border-radius: 14px;
+  font-size: 0.86rem;
+}
+
+@media (max-width: 720px) {
+  .adminTabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .adminGridForm {
+    grid-template-columns: 1fr;
+  }
+
+  .birthdayAdminCard {
+    grid-template-columns: 1fr;
+  }
+
+  .birthdayActions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 420px) {
+  .adminTabs {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Destaque da igreja dentro da data selecionada */
+.highlightCard .eventColor {
+  background: linear-gradient(180deg, var(--theme), var(--theme-dark));
+}
+
+.highlightCard span {
+  color: var(--theme-dark);
+  background: color-mix(in srgb, var(--theme) 16%, #ffffff);
+}
+
+.installHeaderButton {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.08));
+}
+
+/* =========================================================
+   CENTRAL DE NOTIFICAÇÕES DO USUÁRIO
+   ========================================================= */
+
+.notificationInboxButton {
+  position: relative;
+}
+
+.notificationInboxButton.hasUnread {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #ffffff;
+  border-color: transparent;
+}
+
+.notificationInboxButton > span {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  min-width: 19px;
+  height: 19px;
+  padding: 0 5px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: #ef4444;
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 950;
+  border: 2px solid #0f172a;
+}
+
+.userNotificationsModal {
+  max-width: 620px;
+}
+
+.userNotificationsList {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.userNotificationCard {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 20px;
+  background: #f8fafc;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.userNotificationCard.unread {
+  background: #fff7ed;
+  border-color: rgba(245, 158, 11, 0.32);
+  box-shadow: 0 10px 24px rgba(245, 158, 11, 0.12);
+}
+
+.userNotificationCard span {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 7px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  color: #334155;
+  font-size: 0.72rem;
+  font-weight: 950;
+}
+
+.userNotificationCard.unread span {
+  background: #f59e0b;
+  color: #ffffff;
+}
+
+.userNotificationCard strong {
+  display: block;
+  color: #0f172a;
+  font-size: 1rem;
+}
+
+.userNotificationCard p {
+  margin: 6px 0 8px;
+  color: #475569;
+  font-weight: 740;
+  line-height: 1.38;
+}
+
+.userNotificationCard small {
+  color: #64748b;
+  font-weight: 750;
+}
+
+@media (max-width: 520px) {
+  .userNotificationCard {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   AJUSTES DA CENTRAL DE NOTIFICAÇÕES E HISTÓRICO ADMIN
+   ========================================================= */
+
+.adminItemActions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.adminItemActions .ghostButton,
+.adminItemActions .dangerButton {
+  padding: 9px 12px;
+  border-radius: 13px;
+  font-size: 0.82rem;
+}
+
+.userNotificationsHeaderActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: #f8fafc;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.userNotificationsHeaderActions span {
+  color: #475569;
+  font-weight: 850;
+}
+
+.userNotificationsHeaderActions .ghostButton {
+  padding: 9px 12px;
+  border-radius: 13px;
+  font-size: 0.84rem;
+}
+
+.userNotificationCard {
+  cursor: pointer;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+}
+
+.userNotificationCard:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+}
+
+.userNotificationCard.read {
+  opacity: 0.78;
+}
+
+@media (max-width: 520px) {
+  .userNotificationsHeaderActions,
+  .adminItemActions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
